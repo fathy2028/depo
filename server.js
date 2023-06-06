@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: 'config.env' });
 const morgan = require('morgan');
 require('colors');
+
 const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -99,3 +100,7 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
   });
 });
+app.use(express.static(`front/build`))
+app.get(`*`,(req,res)=>{
+  res.sendFile(`${__dirname}/front/build/index.html`)
+})
