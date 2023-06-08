@@ -99,3 +99,7 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
   });
 });
+app.use(express.static(`front/build`))
+app.get(`*`,(req,res)=>{
+  res.sendFile(`${__dirname}/front/build/index.html`)
+})
