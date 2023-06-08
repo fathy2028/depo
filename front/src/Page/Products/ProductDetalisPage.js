@@ -10,14 +10,22 @@ import ViewProductsDetalisHook from './../../hook/products/view-products-detalis
 const ProductDetalisPage = () => {
     const { id } = useParams();
     const [item, images, cat, brand, prod] = ViewProductsDetalisHook(id);
-    if (prod)
-        var items = prod.slice(0, 4)
+    try {
+        if (prod)
+            var items = prod.slice(0, 4)
+    } catch (e) { }
+    try {
+        if (item) {
+            var rateAvg = item.ratingsAverage
+            var rateQty = item.ratingsQuantity
+        }
+    } catch (e) { }
     return (
         <div style={{ minHeight: '670px' }}>
             <CategoryHeader />
             <Container>
                 <ProductDetalis />
-                <RateContainer />
+                <RateContainer rateAvg={rateAvg} rateQty={rateQty} />
                 <CardProductsContainer products={items} title="منتجات قد تعجبك" />
             </Container>
         </div>

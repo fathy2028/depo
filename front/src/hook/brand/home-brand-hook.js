@@ -13,6 +13,7 @@ const HomeBrandHook = () => {
     const brand = useSelector(state => state.allBrand.brand)
     //get last loading state from redux
     const loading = useSelector(state => state.allBrand.loading)
+   
 
     return [brand, loading]
 };

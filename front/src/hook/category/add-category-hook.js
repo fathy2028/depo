@@ -24,6 +24,7 @@ const AddCategoryHook = () => {
     //when image change save it 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
+            console.log(event.target.files[0])
             setImg(URL.createObjectURL(event.target.files[0]))
             setSelectedFile(event.target.files[0])
         }
@@ -34,6 +35,7 @@ const AddCategoryHook = () => {
     const handelSubmit = async (event) => {
         event.preventDefault();
         if (name === "" || selectedFile === null) {
+            console.log('من فضلك اكمل البيانات')
             notify('من فضلك اكمل البيانات', "warn");
             return;
         }
@@ -51,6 +53,7 @@ const AddCategoryHook = () => {
             setImg(avatar)
             setName("")
             setSelectedFile(null)
+            console.log('تم الانتهاء')
             setLoading(true)
             setTimeout(() => setIsPress(false), 1000)
 
